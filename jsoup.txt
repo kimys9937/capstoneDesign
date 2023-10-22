@@ -1,0 +1,25 @@
+https://jobc.tistory.com/78
+
+String URL = "https://finance.naver.com/item/main.nhn?code=005930"; //원하는 url Document doc;
+
+try {//connect해주는거라 화면상에서 띄웠을때 오류가 발생할수 있으니 필수로 작성해주자! 
+        doc = Jsoup.connect(URL).get(); //원하는 url에서 전체 구조를 받아온다
+        Elements elem = doc.select(".date #id"); 
+        //doc.select를 통해 안에서 원하는 elements만 쏙 뽑아와서
+        //이제 내가 원하는 값들을 정리해준다!
+        String text = elem.text();
+        //원하는 부분은 Elements형태로 되어 있으므로 이를 String 형태로 바꾸어 준다.
+} catch (IOException e) {
+         e.printStackTrace();
+}
+
+※ class명이 test인 항목을 가져오는 방법
+Elements items = doc.select(".test");
+
+※ id명이 test인 항목을 가져오는 방법
+Elements items = doc.select("#test");
+
+※ class명이 test인 항목 안의 a태그만 가져오는 방법
+Elements tags = doc.select(".test a");
+
+
